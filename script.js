@@ -27,6 +27,9 @@ video.addEventListener('play', () => {
       const resizedDetections = faceapi.resizeResults(detections, displaySize)
       canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
       
+      // faceapi.draw.drawDetections(canvas, resizedDetections)
+      // faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
+
       resizedDetections.forEach(rdetection => {
         
         let ctx = canvas.getContext("2d");
@@ -36,31 +39,19 @@ video.addEventListener('play', () => {
         ctx.beginPath()
         ctx.moveTo(mouthLandmarks[0].x, mouthLandmarks[0].y)
 
+        // DRAW UPPER LIP
         let i;
-        for (i = 0; i < mouthLandmarks.length; i++) { 
+        for (i = 1; i < 7; i++) { 
           ctx.lineTo(mouthLandmarks[i].x, mouthLandmarks[i].y)
-          ctx.fillStyle = "red"
-          ctx.fill();
         }
-        // ctx.clearRect(0, 0, canvas.width, canvas.height);
-        // console.log(mouthLandmarks)
-
-        // mouthLandmarks.forEach(mark => {
-        //   // ctx.moveTo(mark.x, mark.y);
-        //   // ctx.lineTo(mark.x, mark.y);
-        //   // ctx.lineTo(mark.x, mark.y);
-        //   // ctx.closePath();
-        //   // ctx.stroke();
-        //   // ctx.fill();
-        //   // ctx.fillStyle = "red";
-        //   // ctx.fillRect(mark.x, mark.y, mark.x, mark.y)
-           
-        //   ctx.beginPath();
-        //   ctx.moveTo(mark.x, mark.y);
-        //   ctx.lineTo(10, 70);
-        //   ctx.lineTo(90, 70);
-        //   ctx.fill();
-        // })
+        ctx.moveTo(mouthLandmarks[12].x, mouthLandmarks[12].y)
+        for (i = 13; i < 17; i++) { 
+          ctx.lineTo(mouthLandmarks[i].x, mouthLandmarks[i].y)
+        }
+        ctx.lineTo(mouthLandmarks[6].x, mouthLandmarks[6].y)
+        // ctx.fillStyle = "red"
+        // ctx.fill();
+        ctx.stroke()
       })
 
 
