@@ -37,15 +37,33 @@ video.addEventListener('play', () => {
         let mouthLandmarks = rdetection.landmarks.getMouth()
 
         ctx.beginPath()
-        ctx.moveTo(mouthLandmarks[0].x, mouthLandmarks[0].y)
 
         // DRAW UPPER LIP
+        ctx.moveTo(mouthLandmarks[0].x, mouthLandmarks[0].y)
         let i;
         for (i = 1; i < 7; i++) { 
           ctx.lineTo(mouthLandmarks[i].x, mouthLandmarks[i].y)
         }
         ctx.moveTo(mouthLandmarks[12].x, mouthLandmarks[12].y)
         for (i = 13; i < 17; i++) { 
+          ctx.lineTo(mouthLandmarks[i].x, mouthLandmarks[i].y)
+        }
+        ctx.lineTo(mouthLandmarks[6].x, mouthLandmarks[6].y)
+        // ctx.fillStyle = "red"
+        // ctx.fill();
+        ctx.stroke()
+
+        // DRAW LOWER LIP
+        ctx.moveTo(mouthLandmarks[6].x, mouthLandmarks[6].y)
+
+        for (i = 7; i < 12; i++) { 
+          ctx.lineTo(mouthLandmarks[i].x, mouthLandmarks[i].y)
+        }
+
+        ctx.lineTo(mouthLandmarks[0].x, mouthLandmarks[0].y)
+        // ctx.lineTo(mouthLandmarks[12].x, mouthLandmarks[12].y)
+
+        for (i = 19; i > 16; i--) { 
           ctx.lineTo(mouthLandmarks[i].x, mouthLandmarks[i].y)
         }
         ctx.lineTo(mouthLandmarks[6].x, mouthLandmarks[6].y)
