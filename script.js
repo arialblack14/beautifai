@@ -44,16 +44,24 @@ video.addEventListener('play', () => {
         for (i = 1; i < 7; i++) { 
           ctx.lineTo(mouthLandmarks[i].x, mouthLandmarks[i].y)
         }
-        ctx.moveTo(mouthLandmarks[12].x, mouthLandmarks[12].y)
-        for (i = 13; i < 17; i++) { 
+        
+        ctx.lineTo(mouthLandmarks[16].x, mouthLandmarks[16].y)
+        for (i = 15; i > 12; i--) { 
           ctx.lineTo(mouthLandmarks[i].x, mouthLandmarks[i].y)
         }
-        ctx.lineTo(mouthLandmarks[6].x, mouthLandmarks[6].y)
+        ctx.lineTo(mouthLandmarks[0].x, mouthLandmarks[0].y)
         // ctx.fillStyle = "red"
         // ctx.fill();
+
+        //to fill the space in the shape
+
+        ctx.closePath()
+        ctx.fillStyle = "#FF00FF";
+        ctx.fill()
         ctx.stroke()
 
         // DRAW LOWER LIP
+        ctx.beginPath()
         ctx.moveTo(mouthLandmarks[6].x, mouthLandmarks[6].y)
 
         for (i = 7; i < 12; i++) { 
@@ -67,8 +75,10 @@ video.addEventListener('play', () => {
           ctx.lineTo(mouthLandmarks[i].x, mouthLandmarks[i].y)
         }
         ctx.lineTo(mouthLandmarks[6].x, mouthLandmarks[6].y)
-        // ctx.fillStyle = "red"
-        // ctx.fill();
+        
+        ctx.closePath()
+        ctx.fillStyle = "#FF00FF";
+        ctx.fill()
         ctx.stroke()
       })
 
